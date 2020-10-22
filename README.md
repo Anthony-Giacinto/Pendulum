@@ -2,8 +2,24 @@
 This project allows the user to animate a swinging pendulum using VPython.
 
 ## Table of Contents
+* [General info](#general-info)
 * [Technologies](#technologies)
 * [How to Use](#how-to-use)
+
+## General Info
+The motion of the pendulum is calculated by using this differential equation:  
+alpha = -(g/L)*sin(theta) - dampeningCoeff*omega ,  
+
+where alpha is angular acceleration, omega is angular velocity, and theta is the angular position.  
+
+This program takes starting values of theta and omega (along with other constant values like g, L and dampeningCoeff) and with them, determines alpha, which in turn calculates the next theta and omega after a given amount of time, dt.  
+
+next_theta = previous_theta + previous_omega*dt  
+next_omega = previous_omega + previous_alpha*dt  
+
+The program then repeats this process to track the path of the pendulum  object created using vypthon. Different types of limits can be imposed onto the pendulum to determine when to stop calculating these values or when to reset the process to the original given values.  
+
+There is also an option to plot the angle of the pendulum vs. time alongside the pendulum as it moves (this can cause the program to chug, however).
 
 ## Technologies
 Project is created with:
