@@ -4,6 +4,7 @@ This project allows the user to animate a swinging pendulum using VPython.
 ## Table of Contents
 * [General info](#general-info)
 * [Technologies](#technologies)
+* [Features](#features)
 * [How to Use](#how-to-use)
 
 ## General Info
@@ -24,6 +25,11 @@ There is also an option to plot the angle of the pendulum vs. time alongside the
 ## Technologies
 Project is created with:
 * Python 3.6
+
+## Features
+* Can add a dampening coefficient to the pendulum.
+* Can change the acceleration due to gravity on the pendulum.
+* Can generate a real-time graph of angle vs. time.
 
 ## How to Use
 All you need to do is run pendulum.main.  
