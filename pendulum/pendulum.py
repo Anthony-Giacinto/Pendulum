@@ -14,30 +14,31 @@ class Pendulum:
     """ A pendulum object made using VPython.
 
     Instance Attributes:
-        theta: Starting angle of pendulum from rest in degrees (default is 45).
-        omega: Starting angular velocity of the pendulum in degrees/second (default is 0).
-        dt: Change in time in seconds; must be very small (default is 0.001).
-        rod_length: Length of rod in meters; end of rod to center of bob (default is 3).
-        dampening_coeff: The damping coefficient (default is 0.0).
-        acceleration_from_gravity: The acceleration due to gravity on the pendulum in meters/second**2 (default is 9.8).
-        trail: Shows the path of the moving bob (default is False).
+        theta: (float) Starting angle of pendulum from rest in degrees (default is 45.0).
+        omega: (float) Starting angular velocity of the pendulum in degrees/second (default is 0.0).
+        dt: (float) Change in time in seconds; must be very small (default is 0.001).
+        rod_length: (float) Length of rod in meters; end of rod to center of bob (default is 3.0).
+        dampening_coeff: (float) The damping coefficient (default is 0.0).
+        acceleration_from_gravity: (float) The acceleration due to gravity on the pendulum in meters/second**2
+        (default is 9.8).
+        trail: (bool) Shows the path of the moving bob (default is False).
 
     Properties:
-        angular_acceleration: The angular acceleration of the pendulum bob.
-        position: The cartesian coordinates of the pendulum bob.
+        angular_acceleration: (float) The angular acceleration of the pendulum bob.
+        position: (VPython vector) The cartesian coordinates of the pendulum bob.
     """
 
-    def __init__(self, theta=45, omega=0, dt=0.001, rod_length=3, dampening_coeff=0.5, acceleration_from_gravity=9.8,
-                 trail=False):
+    def __init__(self, theta=45.0, omega=0.0, dt=0.001, rod_length=3.0, dampening_coeff=0.5,
+                 acceleration_from_gravity=9.8, trail=False):
         """
-        :param theta: Starting angle of pendulum from rest in degrees (default is 45).
-        :param omega: Starting angular velocity of the pendulum in degrees/second (default is 0).
-        :param dt: Change in time in seconds; must be very small (default is 0.001).
-        :param rod_length: Length of rod in meters; end of rod to center of bob (default is 3).
-        :param dampening_coeff: The damping coefficient; must be greater than 0 (default is 0.5).
-        :param acceleration_from_gravity: The acceleration due to gravity that the pendulum feels in meters/second**2
-        (default is 9.8).
-        :param trail: Shows the path of the moving bob (default is False).
+        :param theta: (float) Starting angle of pendulum from rest in degrees (default is 45.0).
+        :param omega: (float) Starting angular velocity of the pendulum in degrees/second (default is 0.0).
+        :param dt: (float) Change in time in seconds; must be very small (default is 0.001).
+        :param rod_length: (float) Length of rod in meters; end of rod to center of bob (default is 3.0).
+        :param dampening_coeff: (float) The damping coefficient; must be greater than 0 (default is 0.5).
+        :param acceleration_from_gravity: (float) The acceleration due to gravity that the pendulum
+        feels in meters/second**2 (default is 9.8).
+        :param trail: (bool) Shows the path of the moving bob (default is False).
         """
         
         self.theta = math.radians(theta)

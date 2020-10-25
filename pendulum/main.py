@@ -8,41 +8,41 @@ Functions:
 
 import math
 from vpython import canvas, vector, label, graph, gcurve, color, rate
-from pendulum import Pendulum
+from .pendulum import Pendulum
 
 
-def main(theta=45, omega=0, dt=0.001, rod_length=5, dampening_coeff=0.3, acceleration_from_gravity=9.8, trail=False,
-         animation_rate=2000, time_limit=None, repeat=True, limits=(0.01, 0.001), labels=True, display_width=1900,
-         display_height=950, plot=False):
+def main(theta=45.0, omega=0.0, dt=0.001, rod_length=5.0, dampening_coeff=0.3, acceleration_from_gravity=9.8,
+         trail=False, animation_rate=2000, time_limit=None, repeat=True, limits=(0.01, 0.001), labels=True,
+         display_width=1900, display_height=950, plot=False):
     """ Pendulum demo built for use with VPython.
 
-    :param theta: Starting angle of pendulum from rest in degrees (default is 45).
-    :param omega: Starting angular velocity of the pendulum in degrees/second (default is 0).
-    :param dt: Change in time in seconds; must be very small (default is 0.001).
-    :param rod_length: Length of rod in meters; end of rod to center of bob (default is 5).
-    :param dampening_coeff: The damping coefficient; a number between 0 and 1 (default is 0.3).
-    :param acceleration_from_gravity: The acceleration due to gravity on the pendulum in meters/second**2
+    :param theta: (float) Starting angle of pendulum from rest in degrees (default is 45.0).
+    :param omega: (float) Starting angular velocity of the pendulum in degrees/second (default is 0).
+    :param dt: (float) Change in time in seconds; must be very small (default is 0.001).
+    :param rod_length: (float) Length of rod in meters; end of rod to center of bob (default is 5.0).
+    :param dampening_coeff: (float) The damping coefficient; a number between 0 and 1 (default is 0.3).
+    :param acceleration_from_gravity: (float) The acceleration due to gravity on the pendulum in meters/second**2
     (default is 9.8).
-    :param trail: Shows the path of the moving bob (default is False).
-    :param animation_rate: The maximum amount of loop executions per second (default is 2000).
-    :param time_limit: A number that represents an ending time for the pendulum animation
+    :param trail: (bool) Shows the path of the moving bob (default is False).
+    :param animation_rate: (int) The maximum amount of loop executions per second (default is 2000).
+    :param time_limit: (float) A number that represents an ending time for the pendulum animation
     (t goes from 0 to time_limit with dt step sizes); if left as None the demo will run until it reaches its
     limit values (unless repeat is True) (default is None).
-    :param repeat: If repeat is True and time_limit is None, repeats the demo after the pendulum has reached
+    :param repeat: (bool) If repeat is True and time_limit is None, repeats the demo after the pendulum has reached
     its limit values (default is True).
-    :param limits: A tuple that when time_limit is None, will use +- the given theta (degrees) and
+    :param limits: (list) A tuple that when time_limit is None, will use +- the given theta (degrees) and
     omega (degrees/time) values to determine when to either reset the pendulum or stop (default is (0.01, 0.001)).
-    :param labels: True if you want to display a box of the input values (default is True).
-    :param display_width: The VPython canvas pixel width.
-    :param display_height: The VPython canvas pixel height.
-    :param plot: If True, will display a graph of the bob's angle vs. time; can cause performance issues
+    :param labels: (bool) True if you want to display a box of the input values (default is True).
+    :param display_width: (int) The VPython canvas pixel width.
+    :param display_height: (int) The VPython canvas pixel height.
+    :param plot: (bool) If True, will display a graph of the bob's angle vs. time; can cause performance issues
     (default is False).
     """
 
     _make_scene(plot, display_width, display_height)
     pen = Pendulum(theta=theta, omega=omega, dt=dt, rod_length=rod_length, dampening_coeff=dampening_coeff,
                    acceleration_from_gravity=acceleration_from_gravity, trail=trail)
-    shelf = pen.shelf()
+    pen.shelf()
     rod = pen.rod(pen.position)
     bob = pen.bob(pen.position)
 
@@ -82,8 +82,8 @@ def main(theta=45, omega=0, dt=0.001, rod_length=5, dampening_coeff=0.3, acceler
         while t <= time_limit:
             while t < time_limit:
                 rate(animation_rate)
-                angle = pen.angular_position()
-                vel = pen.angular_velocity()
+                pen.angular_position()
+                pen.angular_velocity()
                 rod.axis = pen.position
                 bob.pos = pen.position
 

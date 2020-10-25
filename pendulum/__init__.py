@@ -1,2 +1,4 @@
-from pendulum.pendulum import Pendulum
-import pendulum.main
+from .pendulum import Pendulum
+from .main import main
+
+__all__ = ['main']
